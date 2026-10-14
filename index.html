@@ -24,6 +24,9 @@
   li { margin:6px 0; }
   .btn { display:inline-block; background:var(--accent); color:#fff; padding:12px 20px; border-radius:8px; text-decoration:none; font-weight:600; }
   @media (prefers-color-scheme: dark) { .btn { color:#06201c; } }
+  label { display:block; margin:12px 0; font-weight:600; font-size:.9rem; }
+  input, select, textarea { display:block; width:100%; margin-top:4px; padding:10px; font:inherit; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:6px; }
+  button.btn { border:0; cursor:pointer; font:inherit; font-weight:600; }
   .note { font-size:.9rem; color:var(--muted); }
 </style>
 </head>
@@ -31,70 +34,84 @@
 <main>
   <h1>Research Review with Nurse Joe</h1>
   <p class="lead">Evidence-based review of research, articles and clinical literature, by appointment.</p>
-  <p class="note">All times are <strong>[TIME ZONE]</strong>. Placeholder hours; confirm before publishing.</p>
 
-  <h2>Weekly availability</h2>
+  <h2>Availability &amp; rate</h2>
   <div class="card">
     <table>
-      <tr><th>Day</th><th>Hours</th><th>Use</th></tr>
-      <tr><td>Monday</td><td>9:00 am – 12:00 pm</td><td>Consultations &amp; reviews</td></tr>
-      <tr><td>Tuesday</td><td>1:00 pm – 5:00 pm</td><td>Consultations &amp; reviews</td></tr>
-      <tr><td>Wednesday</td><td>9:00 am – 12:00 pm</td><td>Consultations &amp; reviews</td></tr>
-      <tr><td>Thursday</td><td>1:00 pm – 5:00 pm</td><td>Consultations &amp; reviews</td></tr>
-      <tr><td>Friday</td><td>9:00 am – 11:00 am</td><td>Follow-ups only</td></tr>
-      <tr><td>Sat / Sun</td><td colspan="2">Closed</td></tr>
+      <tr><th>Days</th><th>Session slots (2 hrs each)</th><th>Rate</th></tr>
+      <tr><td>Monday – Sunday</td>
+          <td>9:00–11:00 am<br>11:00 am–1:00 pm<br>2:00–4:00 pm<br>4:00–6:00 pm</td>
+          <td><strong>GH₵200</strong> per 2-hour session</td></tr>
     </table>
+    <p class="note">Need more time? Book consecutive sessions (4 hrs = GH₵400, and so on). Times are Ghana time (GMT).</p>
   </div>
 
-  <h2>Services &amp; session length</h2>
+  <h2>Book a session</h2>
   <div class="card">
-    <table>
-      <tr><th>Service</th><th>Length</th><th>Turnaround</th></tr>
-      <tr><td>Intro consultation (scope your question)</td><td>20 min</td><td>Same week</td></tr>
-      <tr><td>Single article / study review</td><td>45 min</td><td>3 business days</td></tr>
-      <tr><td>Literature review / evidence summary</td><td>90 min</td><td>7 business days</td></tr>
-      <tr><td>Follow-up / revisions</td><td>30 min</td><td>2 business days</td></tr>
-    </table>
-    <p class="note">Rates: [add your rates here].</p>
+    <form id="bookingForm">
+      <label>Full name<input name="name" required></label>
+      <label>Your email<input type="email" name="email" required></label>
+      <label>Phone / WhatsApp (optional)<input name="phone"></label>
+      <label>Preferred date<input type="date" name="date" required></label>
+      <label>Preferred slot
+        <select name="slot" required>
+          <option>9:00–11:00 am</option><option>11:00 am–1:00 pm</option>
+          <option>2:00–4:00 pm</option><option>4:00–6:00 pm</option>
+        </select>
+      </label>
+      <label>Number of 2-hour sessions
+        <select name="sessions"><option>1</option><option>2</option><option>3</option></select>
+      </label>
+      <label>What needs reviewing? (article, study, thesis, literature review...)
+        <textarea name="topic" rows="3" required></textarea>
+      </label>
+      <label>Deadline<input name="deadline"></label>
+      <button class="btn" type="submit">Send booking request</button>
+      <p class="note">This opens your email app with the request ready to send to Nurse Joe. You'll get a confirmation reply within 1 business day.</p>
+    </form>
   </div>
 
-  <h2>How to book</h2>
+  <h2>Guide: how it works</h2>
   <div class="card">
     <ol>
-      <li><strong>Pick a slot</strong> inside the availability above.</li>
-      <li><strong>Send a request</strong> with the button below. Include your question, the material to review and your deadline.</li>
-      <li><strong>Get confirmation</strong> within 1 business day, with the time and a meeting link.</li>
-      <li><strong>Send materials</strong> at least 48 hours before your session.</li>
-      <li><strong>Receive your review</strong> by the stated turnaround, then book a follow-up if needed.</li>
+      <li><strong>Choose</strong> any day and a 2-hour slot.</li>
+      <li><strong>Submit the form</strong> and send the email it prepares.</li>
+      <li><strong>Receive confirmation</strong> with the time and meeting link.</li>
+      <li><strong>Pay</strong> GH&#8373;200 per session as arranged in the confirmation.</li>
+      <li><strong>Send your materials</strong> at least 24 hours before the session.</li>
+      <li><strong>Attend your session</strong> and receive written feedback or a summary.</li>
     </ol>
-    <p>
-      <a class="btn" href="mailto:mnursejoe@gmail.com?subject=Research%20Review%20Booking%20Request&body=Name%3A%0AService%20(consult%20%2F%20article%20%2F%20literature%20review%20%2F%20follow-up)%3A%0APreferred%20day%20%26%20time%20(2%20options)%3A%0ATime%20zone%3A%0AResearch%20question%3A%0ADeadline%3A%0ALinks%20or%20attachments%3A">Request a booking</a>
-    </p>
-  </div>
-
-  <h2>Guide: preparing for your session</h2>
-  <div class="card">
     <h3>Bring or send</h3>
     <ul>
-      <li>Your specific question or the decision the research should inform</li>
+      <li>Your specific question, or the decision the research should inform</li>
       <li>The paper(s), links or DOIs, or your draft</li>
-      <li>Your audience (clinical staff, students, patients, a journal) and any required format</li>
-      <li>Your deadline</li>
+      <li>Your audience (clinical staff, students, journal) and any required format</li>
     </ul>
     <h3>What a review covers</h3>
     <ul>
       <li>Study design and quality (bias, sample, methods, statistics)</li>
-      <li>How strong the evidence is and how well it applies to practice</li>
+      <li>Strength of the evidence and how it applies to practice</li>
       <li>Plain-language summary of findings and limits</li>
-      <li>Suggestions for further reading or next steps</li>
+      <li>Suggested next steps or further reading</li>
     </ul>
     <h3>Policies</h3>
     <ul>
       <li><strong>Rescheduling:</strong> at least 24 hours' notice.</li>
-      <li><strong>Scope:</strong> educational and research review only. It is not medical advice, diagnosis or treatment. For personal health concerns, contact your clinician.</li>
-      <li><strong>Privacy:</strong> do not send identifiable patient information. De-identify all materials.</li>
+      <li><strong>Scope:</strong> educational and research review only. It is not medical advice, diagnosis or treatment.</li>
+      <li><strong>Privacy:</strong> do not send identifiable patient information.</li>
     </ul>
   </div>
+<script>
+document.getElementById('bookingForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = new FormData(e.target), g = function (k) { return f.get(k) || '-'; };
+  var body = 'Name: ' + g('name') + '\nEmail: ' + g('email') + '\nPhone: ' + g('phone') +
+    '\nDate: ' + g('date') + '\nSlot: ' + g('slot') + '\nSessions (2 hrs each): ' + g('sessions') +
+    '\nTopic: ' + g('topic') + '\nDeadline: ' + g('deadline');
+  window.location.href = 'mailto:mnursejoe@gmail.com?subject=' +
+    encodeURIComponent('Research Review Booking: ' + g('name')) + '&body=' + encodeURIComponent(body);
+});
+</script>
 </main>
 </body>
 </html>
